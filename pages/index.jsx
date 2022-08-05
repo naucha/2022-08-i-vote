@@ -1,9 +1,9 @@
+import VotationListItem from "../components/VotationListItem";
 import dbConnect from "../lib/dbConnectDB";
-import Votation from "../models/Votation";
+import VotationModel from "../models/Votation";
 import styles from "../styles/Home.module.css";
-import mongoose from "mongoose";
 
-const Home = () => {
+const Home = ({ votations }) => {
   return (
     <>
       {" "}
@@ -13,6 +13,13 @@ const Home = () => {
             among the given options. A quick way to decide the weekend plan or 
             to decide the day to have lunch with friends.`}
       </section>
+      <section>
+        <ul>
+          {votations.map((votation) => (
+            <VotationListItem key={votation._id} votation={votation} />
+          ))}
+        </ul>
+      </section>
     </>
   );
 };
@@ -20,9 +27,9 @@ const Home = () => {
 export async function getServerSideProps() {
   await dbConnect();
 
-  console.log("CONNECTED TO DB");
+  console.log("FIND on DB");
 
-  const result = await Votation.find({});
+  const result = await VotationModel.find({});
   const votations = result.map((doc) => {
     const votation = doc.toObject();
 
