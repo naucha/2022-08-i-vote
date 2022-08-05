@@ -21,10 +21,6 @@ const App = ({ Component, pageProps }) => {
           <Link href={`/newpost/new`}>
             <a>New Votation</a>
           </Link>
-
-          <Link href={`/posts/id`}>
-            <a>Existing Votation</a>
-          </Link>
         </nav>
       </header>
       <main>
