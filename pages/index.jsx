@@ -1,22 +1,25 @@
-import VotationListItem from "../components/VotationListItem";
+import PollListItem from "../components/PollListitem/PollListItem";
+import { useAppContext } from "../store/context/appContext";
 import dbConnect from "../lib/dbConnectDB";
-import VotationModel from "../models/Votation";
 import styles from "../styles/Home.module.css";
+import PollModel from "../models/Poll";
 
-const Home = ({ votations }) => {
+const Home = ({ polls }) => {
+  const globalContext = useAppContext();
+
   return (
     <>
-      {" "}
       <section className={styles.description}>
         {`
             This application is made to quickly create posts to be able to vote
             among the given options. A quick way to decide the weekend plan or 
             to decide the day to have lunch with friends.`}
       </section>
+
       <section>
         <ul>
-          {votations.map((votation) => (
-            <VotationListItem key={votation._id} votation={votation} />
+          {polls.map((poll) => (
+            <PollListItem key={poll._id} poll={poll} />
           ))}
         </ul>
       </section>
@@ -27,18 +30,23 @@ const Home = ({ votations }) => {
 export async function getServerSideProps() {
   await dbConnect();
 
-  console.log("FIND on DB");
+  console.log("FIND ALL ON DB");
 
-  const result = await VotationModel.find({});
-  const votations = result.map((doc) => {
-    const votation = doc.toObject();
+  const result = await PollModel.find({});
+  console.log("FIND DB", result);
 
-    votation._id = votation._id.toString();
+  const polls = JSON.parse(JSON.stringify(result));
 
-    return votation;
-  });
+  // const polls = JSON.parse(poll);
+  // console.log(polls);
+  // const votations = result.map((doc) => {
 
-  return { props: { votations } };
+  //   const votation = doc.toObject();
+  //   // votation._id = votation._id.toString();
+  //   return votation;
+  // });
+
+  return { props: { polls } };
 }
 
 export default Home;
