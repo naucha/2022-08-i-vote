@@ -56,7 +56,16 @@ export async function getServerSideProps(context) {
 
   const pollResponse = await PollModel.findById(id);
   const poll = pollResponse.toObject();
+
   poll._id = pollResponse._id.toString();
+
+  const optionsToClean = poll.options;
+
+  optionsToClean.map((option) => {
+    const cleaned = "";
+    option._id = option._id.toString();
+    return cleaned;
+  });
 
   return { props: { poll } };
 }
