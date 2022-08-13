@@ -30,9 +30,7 @@ const CreateForm = ({ data }) => {
       ],
     };
 
-    console.log("data en form", data);
     const JSONdata = JSON.stringify(data);
-    console.log("JsonDAta form", JSONdata);
 
     const response = await fetch("api/create-vote", {
       body: JSONdata,
@@ -40,8 +38,6 @@ const CreateForm = ({ data }) => {
     });
 
     const result = await response.json();
-
-    console.log(result);
   };
 
   return (
