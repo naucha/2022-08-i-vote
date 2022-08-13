@@ -3,8 +3,6 @@ import styles from "../../styles/Home.module.css";
 const PollDetailitem = ({ poll }) => {
   const { title, description, options } = poll;
 
-  console.log(options.option);
-
   return (
     <>
       <h2>{title}</h2>

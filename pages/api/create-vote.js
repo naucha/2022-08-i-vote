@@ -1,14 +1,15 @@
 import dbConnect from "../../lib/dbConnectDB";
-import Poll from "../../models/Poll";
+import PollModel from "../../models/Poll";
 
 const handler = async (req, res) => {
   const data = req.body;
-
+  debugger;
   if (req.method === "POST") {
     await dbConnect();
 
-    const dataMod = await Poll.create(data);
-
+    debugger;
+    const dataMod = await PollModel.create(JSON.parse(data));
+    console.log(dataMod);
     res.json({ message: `ok adding data ` });
   } else {
     res.json({ message: `i did nothing ` });
