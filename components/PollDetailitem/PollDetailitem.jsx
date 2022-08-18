@@ -1,7 +1,23 @@
+import { useContext } from "react";
+import { OptionVotesContext } from "../../store/context/OptionVotesContext";
 import styles from "../../styles/Home.module.css";
 
 const PollDetailitem = ({ poll }) => {
-  const { title, description, options } = poll;
+  const { title, description, options, _id: idPoll } = poll;
+
+  const [state, setState] = useContext(OptionVotesContext);
+
+  const handlerVoted = async (index) => {
+    const optionIdToChange = options[index]._id;
+    const pollIdToChange = idPoll;
+
+    const response = await fetch("../api/submit-vote", {
+      body: [pollIdToChange, optionIdToChange],
+      method: "PUT",
+    });
+
+    const result = await response.json();
+  };
 
   return (
     <>
@@ -11,7 +27,7 @@ const PollDetailitem = ({ poll }) => {
         <ul>
           {options.map(({ option, votes }, index) => (
             <li key={index}>
-              <button>
+              <button onClick={() => handlerVoted(index)}>
                 <span>{votes.length} </span>
                 {option}
               </button>
