@@ -1,30 +1,17 @@
 import Head from "next/head";
 import Link from "next/link";
 import dbConnect from "../../lib/dbConnectDB";
-import { useState } from "react";
-import CircleChart from "../../components/CircleChart/CircleChart";
+import { useContext, useEffect } from "react";
 import PollModel from "../../models/Poll";
 import PollDetailitem from "../../components/PollDetailitem/PollDetailitem";
+import { OptionVotesContext } from "../../store/context/OptionVotesContext";
 
-const PollDetail = ({ poll }) => {
-  const { options } = poll;
+const PollDetail = ({ element }) => {
+  const { poll, setPoll } = useContext(OptionVotesContext);
 
-  const [userData, setData] = useState({
-    labels: options.map((data) => data.option),
-    datasets: [
-      {
-        label: "Users options",
-        data: options.map((data) => data.votes.length),
-        backgroundColor: [
-          "rgb(203,82,82)",
-          "rgb(69,177,223)",
-          "rgb(99,201,122)",
-          "rgb(229,224,88)",
-        ],
-        borderWidth: 1,
-      },
-    ],
-  });
+  useEffect(() => {
+    setPoll(element);
+  }, [element, setPoll]);
 
   return (
     <>
@@ -32,10 +19,7 @@ const PollDetail = ({ poll }) => {
         <title>Votation</title>
       </Head>
       <div style={{ width: 400 }}>
-        <PollDetailitem poll={poll} />
-        <div style={{ width: 250 }}>
-          <CircleChart chartData={userData} />
-        </div>
+        <PollDetailitem poll={poll} setPoll={setPoll} />
       </div>
       <div>
         <Link href={"/"}>
@@ -67,7 +51,7 @@ export async function getServerSideProps(context) {
     return cleaned;
   });
 
-  return { props: { poll } };
+  return { props: { element: poll } };
 }
 
 export default PollDetail;

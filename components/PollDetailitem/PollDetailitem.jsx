@@ -1,11 +1,8 @@
-import { useContext } from "react";
-import { OptionVotesContext } from "../../store/context/OptionVotesContext";
 import styles from "../../styles/Home.module.css";
+import CircleChart from "../CircleChart/CircleChart";
 
-const PollDetailitem = ({ poll }) => {
+const PollDetailitem = ({ poll, setPoll }) => {
   const { title, description, options, _id: idPoll } = poll;
-
-  const [state, setState] = useContext(OptionVotesContext);
 
   const handlerVoted = async (index) => {
     const optionIdToChange = options[index]._id;
@@ -17,8 +14,29 @@ const PollDetailitem = ({ poll }) => {
     });
 
     const result = await response.json();
+    setPoll(result);
   };
 
+  if (idPoll == null) {
+    return "Loading";
+  }
+
+  const chartData = {
+    labels: options.map((data) => data.option),
+    datasets: [
+      {
+        label: "Users options",
+        data: options.map((data) => data.votes.length),
+        backgroundColor: [
+          "rgb(203,82,82)",
+          "rgb(69,177,223)",
+          "rgb(99,201,122)",
+          "rgb(229,224,88)",
+        ],
+        borderWidth: 1,
+      },
+    ],
+  };
   return (
     <>
       <h2>{title}</h2>
@@ -40,6 +58,9 @@ const PollDetailitem = ({ poll }) => {
           August 1
         </p>
       </li>
+      <div style={{ width: 250 }}>
+        <CircleChart chartData={chartData} />
+      </div>
     </>
   );
 };
