@@ -1,12 +1,9 @@
 import PollListItem from "../components/PollListitem/PollListItem";
-import { useAppContext } from "../store/context/appContext";
 import dbConnect from "../lib/dbConnectDB";
 import styles from "../styles/Home.module.css";
 import PollModel from "../models/Poll";
-import mongoose from "mongoose";
 
 const Home = ({ polls }) => {
-  const globalContext = useAppContext();
   return (
     <>
       <section className={styles.description}>
