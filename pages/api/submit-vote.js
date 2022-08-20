@@ -32,7 +32,7 @@ const handler = async (req, res) => {
 
     await PollModel.findByIdAndUpdate(idPollToUpdate, updatedPoll);
 
-    res.json({ updatedPoll });
+    res.json(updatedPoll);
   } else {
     res.json({ message: `i did nothing ` });
   }
