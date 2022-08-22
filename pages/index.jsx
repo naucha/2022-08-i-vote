@@ -1,7 +1,7 @@
-import PollListItem from "../components/PollListitem/PollListItem";
 import dbConnect from "../lib/dbConnectDB";
 import styles from "../styles/Home.module.css";
 import PollModel from "../models/Poll";
+import Polls from "../components/Polls/Polls";
 
 const Home = ({ polls }) => {
   return (
@@ -14,11 +14,7 @@ const Home = ({ polls }) => {
       </section>
 
       <section>
-        <ul>
-          {polls.map((poll, index) => (
-            <PollListItem key={index} poll={poll} />
-          ))}
-        </ul>
+        <Polls polls={polls} />
       </section>
     </>
   );
