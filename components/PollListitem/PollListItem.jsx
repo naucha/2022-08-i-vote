@@ -1,21 +1,17 @@
 import Link from "next/link";
-import styles from "../../styles/Home.module.css";
+import Options from "../Options/Options";
+import { ListItem, Title, Description } from "../Styles/ListItemStyled";
 
 const PollListItem = ({ poll }) => {
   const { title, _id, description, options } = poll;
 
   return (
     <Link href={`/posts/${_id}`}>
-      <li className={styles.card}>
-        <h2>{title}</h2>
-        <p>{description}</p>
-
-        <ul>
-          {options.map(({ option }, index) => (
-            <li key={index}>{option}</li>
-          ))}
-        </ul>
-      </li>
+      <ListItem>
+        <Title>{title}</Title>
+        <Description>{description}</Description>
+        <Options options={options} />
+      </ListItem>
     </Link>
   );
 };
