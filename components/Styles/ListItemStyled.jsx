@@ -8,13 +8,12 @@ const Title = styled.h2`
   :hover,
   :focus,
   :active {
-    color: white;
+    color: #fff;
   }
 `;
 
 const Description = styled.p`
   font-size: 1rem;
-  text-align: right;
   padding-right: 0.4rem;
 `;
 
@@ -28,7 +27,7 @@ const ListItem = styled.li`
   text-align: left;
   font-size: 1.2rem;
 
-  border: 1px solid #eaeaea;
+  border: 1px solid #fff;
   border-radius: 10px;
   text-decoration: none;
   color: inherit;
@@ -38,8 +37,8 @@ const ListItem = styled.li`
   :hover,
   :focus,
   :active {
-    color: #8503ff;
-    border-color: #8503ff;
+    color: #fff;
+    border-color: #45b1df;
   }
 `;
 
