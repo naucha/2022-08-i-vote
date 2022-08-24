@@ -1,21 +1,18 @@
-import styles from "../../styles/Home.module.css";
+import OptionsToVote from "../OptionsToVote/OptionsToVote";
 import CircleChart from "../CircleChart/CircleChart";
+import {
+  Description,
+  Info,
+  Title,
+  ListContainer,
+  ChartContainer,
+  InfoContainer,
+  DetailContainer,
+  Heading,
+} from "../Styles/DetailItemStyled";
 
 const PollDetailitem = ({ poll, setPoll }) => {
   const { title, description, options, _id: idPoll } = poll;
-
-  const handlerVoted = async (index) => {
-    const optionIdToChange = options[index]._id;
-    const pollIdToChange = idPoll;
-
-    const response = await fetch("../api/submit-vote", {
-      body: [pollIdToChange, optionIdToChange],
-      method: "PUT",
-    });
-
-    const result = await response.json();
-    setPoll(result);
-  };
 
   if (idPoll == null) {
     return "Loading";
@@ -27,40 +24,35 @@ const PollDetailitem = ({ poll, setPoll }) => {
       {
         label: "Users options",
         data: options.map((data) => data.votes.length),
-        backgroundColor: [
-          "rgb(203,82,82)",
-          "rgb(69,177,223)",
-          "rgb(99,201,122)",
-          "rgb(229,224,88)",
-        ],
+        backgroundColor: ["#cb5252", "#e5e058", "#45b1df", "#63c97a"],
         borderWidth: 1,
       },
     ],
   };
+
   return (
     <>
-      <h2>{title}</h2>
-      <li className={styles.card}>
-        <p>{description}</p>
-        <ul>
-          {options.map(({ option, votes }, index) => (
-            <li key={index}>
-              <button onClick={() => handlerVoted(index)}>
-                <span>{votes.length} </span>
-                {option}
-              </button>
-            </li>
-          ))}
-        </ul>
-        <p>
-          The winning option for now is <span className={styles.p}>.... </span>
-          You still have time to change, the most chosen option, you have until
-          August 1
-        </p>
-      </li>
-      <div style={{ width: 250 }}>
-        <CircleChart chartData={chartData} />
-      </div>
+      <section>
+        <ListContainer>
+          <DetailContainer>
+            <InfoContainer>
+              <Heading>
+                <Title>{title}</Title>
+                <Description>{description}</Description>
+              </Heading>
+              <Info>
+                The winning option for now is <span>.... </span>
+                You still have time to change, the most chosen option, you have
+                until August 1
+              </Info>
+            </InfoContainer>
+            <OptionsToVote poll={poll} setPoll={setPoll} />
+          </DetailContainer>
+          <ChartContainer>
+            <CircleChart chartData={chartData} />
+          </ChartContainer>
+        </ListContainer>
+      </section>
     </>
   );
 };
