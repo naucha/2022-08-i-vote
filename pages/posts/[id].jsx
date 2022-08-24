@@ -18,10 +18,8 @@ const PollDetail = ({ element }) => {
       <Head>
         <title>Votation</title>
       </Head>
-      <div style={{ width: 400 }}>
-        <PollDetailitem poll={poll} setPoll={setPoll} />
-      </div>
       <div>
+        <PollDetailitem poll={poll} setPoll={setPoll} />
         <Link href={"/"}>
           <a>← Back to home</a>
         </Link>
