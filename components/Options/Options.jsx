@@ -5,6 +5,10 @@ const List = styled.ul`
   margin: 0;
   padding: 0;
   flex-wrap: wrap;
+  @media (max-width: 400px) {
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 
 const Option = styled.li`
@@ -16,9 +20,11 @@ const Option = styled.li`
   text-align: center;
   color: inherit;
   border: 1px solid #fff;
-  /* min-width: 6rem; */
   width: 8rem;
   display: grid;
+  @media (max-width: 400px) {
+    min-width: 18rem;
+  }
 `;
 
 const Options = ({ options }) => {
