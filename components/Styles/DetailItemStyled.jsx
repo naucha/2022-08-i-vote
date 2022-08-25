@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const ListContainer = styled.ul`
-  border: 1px solid red;
   display: flex;
   align-items: flex-start;
   gap: 2rem;
@@ -18,11 +17,12 @@ const ListContainer = styled.ul`
 `;
 
 const DetailContainer = styled.li`
-  border: 1px solid aliceblue;
   display: flex;
   flex-direction: column;
+  height: 45vh;
+  border: 1px solid #fff;
+  border-radius: 10px;
   margin: 0;
-
   padding: 0;
   gap: 1rem;
 `;
@@ -74,24 +74,12 @@ const Info = styled.p`
   }
 `;
 
-const ChartContainer = styled.div`
-  width: 14rem;
-  display: flex;
-  justify-content: center;
-  color: white;
-  text-align: left;
-  height: 42vh;
-
-  border: 1px solid white;
-`;
-
 export {
   Title,
   Description,
   Info,
   DetailContainer,
   ListContainer,
-  ChartContainer,
   InfoContainer,
   Heading,
 };
