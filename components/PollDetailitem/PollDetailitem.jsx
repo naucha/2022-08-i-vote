@@ -1,11 +1,10 @@
+import { CircleChart } from "../CircleChart/CircleChart";
 import OptionsToVote from "../OptionsToVote/OptionsToVote";
-import CircleChart from "../CircleChart/CircleChart";
 import {
   Description,
   Info,
   Title,
   ListContainer,
-  ChartContainer,
   InfoContainer,
   DetailContainer,
   Heading,
@@ -17,18 +16,6 @@ const PollDetailitem = ({ poll, setPoll }) => {
   if (idPoll == null) {
     return "Loading";
   }
-
-  const chartData = {
-    labels: options.map((data) => data.option),
-    datasets: [
-      {
-        label: "Users options",
-        data: options.map((data) => data.votes.length),
-        backgroundColor: ["#cb5252", "#e5e058", "#45b1df", "#63c97a"],
-        borderWidth: 1,
-      },
-    ],
-  };
 
   return (
     <>
@@ -48,9 +35,7 @@ const PollDetailitem = ({ poll, setPoll }) => {
             </InfoContainer>
             <OptionsToVote poll={poll} setPoll={setPoll} />
           </DetailContainer>
-          <ChartContainer>
-            <CircleChart chartData={chartData} />
-          </ChartContainer>
+          <CircleChart options={options} />
         </ListContainer>
       </section>
     </>
