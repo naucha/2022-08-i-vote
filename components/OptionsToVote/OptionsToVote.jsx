@@ -9,6 +9,7 @@ const Options = styled.ul`
     flex-direction: column;
     align-items: center;
     margin-top: 2.2rem;
+    margin-bottom: 2.2rem;
     gap: 1rem;
   }
 

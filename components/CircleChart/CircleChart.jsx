@@ -6,10 +6,14 @@ const ChartContainer = styled.div`
   display: flex;
   align-items: stretch;
   width: 20rem;
-  height: 60vh;
+  height: 40vh;
 
   border: 1px solid #fff;
   border-radius: 10px;
+
+  @media (max-width: 600px) {
+    height: 50vh;
+  }
 `;
 
 const config = {

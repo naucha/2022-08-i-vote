@@ -5,11 +5,10 @@ const ListContainer = styled.ul`
   align-items: flex-start;
   gap: 2rem;
   width: 100vw;
-  height: 100vh;
   margin: 0;
   padding: 1rem;
 
-  @media (max-width: 800px) {
+  @media (max-width: 940px) {
     flex-direction: column;
     align-items: center;
     height: 100vh;
@@ -19,18 +18,20 @@ const ListContainer = styled.ul`
 const DetailContainer = styled.li`
   display: flex;
   flex-direction: column;
-  height: 45vh;
+  height: 40vh;
   border: 1px solid #fff;
   border-radius: 10px;
   margin: 0;
   padding: 0;
   gap: 1rem;
+  @media (max-width: 600px) {
+    height: 70vh;
+  }
 `;
 
 const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
-  height: 30vh;
 `;
 
 const Heading = styled.div`
@@ -65,12 +66,12 @@ const Description = styled.p`
 
 const Info = styled.p`
   margin: 0;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-style: italic;
   text-align: center;
-  padding-right: 0.4rem;
+  padding: 1rem;
   @media (max-width: 600px) {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
   }
 `;
 
