@@ -6,13 +6,13 @@ const ChartContainer = styled.div`
   display: flex;
   align-items: stretch;
   width: 20rem;
-  height: 40vh;
+  height: 50vh;
 
   border: 1px solid #fff;
   border-radius: 10px;
 
-  @media (max-width: 600px) {
-    height: 50vh;
+  @media (max-width: 940px) {
+    height: 60vh;
   }
 `;
 
@@ -41,7 +41,7 @@ export function CircleChart({ options }) {
     datasets: [
       {
         data: options.map((data) => data.votes.length),
-        backgroundColor: ["#cb5252", "#e5e058", "#45b1df", "#63c97a"],
+        backgroundColor: ["#cb5252", "#7b45df", "#63c97a", "#e5e058"],
         hoverOffset: 12,
         rotation: 25,
         borderRadius: 6,
