@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import CreateForm from "../components/CreateForm/CreateForm";
+import StyledLink from "../components/Styles/LinkStyles";
 
 const NewPoll = ({ data }) => {
   return (
@@ -12,9 +13,7 @@ const NewPoll = ({ data }) => {
         <CreateForm />
       </main>
       <div>
-        <Link href={"/"}>
-          <a>← Back to home</a>
-        </Link>
+        <StyledLink href={"/"} name="Back Home"></StyledLink>
       </div>
     </>
   );
