@@ -30,7 +30,7 @@ const ButtonStyled = styled.button`
   align-items: center;
   padding: 0.6rem;
   color: #fff;
-  background-color: #63c97a;
+  background-color: #45b1df;
   border: 1px solid white;
   border-radius: 10px;
   width: 10rem;
@@ -39,7 +39,7 @@ const ButtonStyled = styled.button`
   letter-spacing: 0.1rem;
 
   :hover {
-    background-color: #cb5252;
+    background-color: #45b1dfc2;
   }
 
   :active {

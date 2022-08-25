@@ -18,14 +18,17 @@ const ListContainer = styled.ul`
 const DetailContainer = styled.li`
   display: flex;
   flex-direction: column;
-  height: 40vh;
+  height: 50vh;
   border: 1px solid #fff;
   border-radius: 10px;
   margin: 0;
   padding: 0;
   gap: 1rem;
+  @media (max-width: 940px) {
+    height: 60vh;
+  }
   @media (max-width: 600px) {
-    height: 70vh;
+    height: 100vh;
   }
 `;
 
