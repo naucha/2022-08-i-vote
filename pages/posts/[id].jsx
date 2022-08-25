@@ -1,10 +1,11 @@
 import Head from "next/head";
-import Link from "next/link";
 import dbConnect from "../../lib/dbConnectDB";
 import { useContext, useEffect } from "react";
 import PollModel from "../../models/Poll";
 import PollDetailitem from "../../components/PollDetailitem/PollDetailitem";
 import { OptionVotesContext } from "../../store/context/OptionVotesContext";
+import StyledLink from "../../components/Styles/LinkStyles";
+import { ContainerMainDetail } from "../../components/Styles/SharedStyles";
 
 const PollDetail = ({ element }) => {
   const { poll, setPoll } = useContext(OptionVotesContext);
@@ -18,12 +19,10 @@ const PollDetail = ({ element }) => {
       <Head>
         <title>Votation</title>
       </Head>
-      <div>
+      <ContainerMainDetail>
         <PollDetailitem poll={poll} setPoll={setPoll} />
-        <Link href={"/"}>
-          <a>← Back to home</a>
-        </Link>
-      </div>
+        <StyledLink href="/" name="Back Home"></StyledLink>
+      </ContainerMainDetail>
     </>
   );
 };
