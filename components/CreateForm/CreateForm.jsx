@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 import { Title } from "../Styles/DetailItemStyled";
 import {
   ContainerFieldset,
@@ -21,6 +22,8 @@ const CreateForm = ({ data }) => {
     answerThree: "",
     creator: "",
   };
+
+  const router = useRouter();
 
   const [formData, setFormData] = useState(blankFields);
 
@@ -49,6 +52,9 @@ const CreateForm = ({ data }) => {
     });
 
     const result = await response.json();
+    if (result) {
+      router.push("/");
+    }
   };
 
   return (
