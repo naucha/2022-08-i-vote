@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ButtonStyled, Votes } from "../Styles/SharedStyles";
 
 const Options = styled.ul`
   display: flex;
@@ -20,56 +21,6 @@ const Options = styled.ul`
 
 const ListItem = styled.li`
   display: flex;
-`;
-
-const ButtonStyled = styled.button`
-  all: unset;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.6rem;
-  color: #fff;
-  background-color: #45b1df;
-  border: 1px solid white;
-  border-radius: 10px;
-  width: 10rem;
-
-  font-weight: 500;
-  letter-spacing: 0.1rem;
-
-  :hover {
-    background-color: #45b1dfc2;
-  }
-
-  :active {
-    color: black;
-    border-color: #000;
-  }
-
-  @media (max-width: 600px) {
-    width: 14rem;
-    font-size: 1.2rem;
-    font-weight: 600;
-  }
-`;
-
-const Span = styled.span`
-  color: #000;
-  color: #fff;
-  border: 1px solid white;
-  border-radius: 10px;
-  letter-spacing: 0.1rem;
-  text-align: center;
-  padding: 0.5rem;
-  font-weight: 800;
-  width: 3rem;
-
-  :active {
-    color: #000;
-    background-color: #cb5252;
-    border-color: #ffae00;
-  }
 `;
 
 const OptionsToVote = ({ poll, setPoll }) => {
@@ -94,7 +45,7 @@ const OptionsToVote = ({ poll, setPoll }) => {
         <ListItem key={index}>
           <ButtonStyled onClick={() => handlerVoted(index)}>
             {option}
-            <Span>{votes.length}</Span>
+            <Votes>{votes.length}</Votes>
           </ButtonStyled>
         </ListItem>
       ))}
@@ -102,4 +53,4 @@ const OptionsToVote = ({ poll, setPoll }) => {
   );
 };
 
-export default OptionsToVote;
+export { OptionsToVote };
