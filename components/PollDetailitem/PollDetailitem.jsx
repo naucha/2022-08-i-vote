@@ -1,5 +1,5 @@
 import { CircleChart } from "../CircleChart/CircleChart";
-import OptionsToVote from "../OptionsToVote/OptionsToVote";
+import { OptionsToVote } from "../OptionsToVote/OptionsToVote";
 import {
   Description,
   Info,
@@ -9,7 +9,7 @@ import {
   DetailContainer,
   Heading,
 } from "../Styles/DetailItemStyled";
-import { ContainerMain } from "../Styles/SharedStyles";
+import { ContainerSection } from "../Styles/SharedStyles";
 
 const PollDetailitem = ({ poll, setPoll }) => {
   const { title, description, options, _id: idPoll } = poll;
@@ -20,7 +20,7 @@ const PollDetailitem = ({ poll, setPoll }) => {
 
   return (
     <>
-      <ContainerMain>
+      <ContainerSection>
         <ListContainer>
           <DetailContainer>
             <InfoContainer>
@@ -38,7 +38,7 @@ const PollDetailitem = ({ poll, setPoll }) => {
           </DetailContainer>
           <CircleChart options={options} />
         </ListContainer>
-      </ContainerMain>
+      </ContainerSection>
     </>
   );
 };

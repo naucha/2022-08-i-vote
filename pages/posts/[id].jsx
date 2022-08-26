@@ -5,7 +5,7 @@ import PollModel from "../../models/Poll";
 import PollDetailitem from "../../components/PollDetailitem/PollDetailitem";
 import { OptionVotesContext } from "../../store/context/OptionVotesContext";
 import StyledLink from "../../components/Styles/LinkStyles";
-import { ContainerMainDetail } from "../../components/Styles/SharedStyles";
+import { ContainerMain } from "../../components/Styles/SharedStyles";
 
 const PollDetail = ({ element }) => {
   const { poll, setPoll } = useContext(OptionVotesContext);
@@ -19,10 +19,10 @@ const PollDetail = ({ element }) => {
       <Head>
         <title>Votation</title>
       </Head>
-      <ContainerMainDetail>
+      <ContainerMain>
         <PollDetailitem poll={poll} setPoll={setPoll} />
         <StyledLink href="/" name="Back Home"></StyledLink>
-      </ContainerMainDetail>
+      </ContainerMain>
     </>
   );
 };
