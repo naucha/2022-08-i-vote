@@ -1,5 +1,16 @@
 import React, { useState } from "react";
-import homeStyles from "../../styles/Home.module.css";
+import { Title } from "../Styles/DetailItemStyled";
+import {
+  ContainerFieldset,
+  ContainerSection,
+  Fieldset,
+  Form,
+  Input,
+  Label,
+  Legend,
+  TextArea,
+} from "../Styles/FormStyles";
+import { ButtonStyled } from "../Styles/SharedStyles";
 
 const CreateForm = ({ data }) => {
   const blankFields = {
@@ -41,60 +52,61 @@ const CreateForm = ({ data }) => {
   };
 
   return (
-    <section>
-      <h2>Create </h2>
-      <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-        <fieldset className={homeStyles.card}>
-          <legend>New Poll</legend>
-          <label htmlFor="question">
-            {" "}
-            <input
+    <ContainerSection>
+      <Title>Create new poll and shared</Title>
+      <Form noValidate autoComplete="off" onSubmit={handleSubmit}>
+        <ContainerFieldset>
+          <Fieldset>
+            <Legend>New Poll </Legend>
+            <Input
               id="question"
               onChange={handleChange}
               value={formData.question}
             />
-          </label>
+            <Label htmlFor="description">
+              Be more precise in explaining the poll options{" "}
+            </Label>
 
-          <textarea
-            id="description"
-            value={formData.description}
-            onChange={handleChange}
-            cols={28}
-            rows={10}
-            autoFocus={true}
-          ></textarea>
-
-          <div className="form__options--container">
-            <label htmlFor="answerOne">Answer One</label>
-            <input
+            <TextArea
+              id="description"
+              value={formData.description}
+              onChange={handleChange}
+              cols={28}
+              rows={10}
+              autoFocus={true}
+            ></TextArea>
+          </Fieldset>
+          <Fieldset>
+            <Label htmlFor="answerOne">Answer One</Label>
+            <Input
               value={formData.answerone}
               onChange={handleChange}
               id="answerOne"
             />
 
-            <label htmlFor="answerTwo">Answer Two</label>
-            <input
+            <Label htmlFor="answerTwo">Answer Two</Label>
+            <Input
               value={formData.answertwo}
               onChange={handleChange}
               id="answerTwo"
             />
-            <label htmlFor="answerThree">Answer Three</label>
-            <input
+            <Label htmlFor="answerThree">Answer Three</Label>
+            <Input
               value={formData.answerthree}
               onChange={handleChange}
               id="answerThree"
             />
-            <label htmlFor="creator">Creator</label>
-            <input
+            <Label htmlFor="creator">Creator</Label>
+            <Input
               value={formData.creator}
               onChange={handleChange}
               id="creator"
             />
-          </div>
-          <button type="submit">Publish</button>
-        </fieldset>
-      </form>
-    </section>
+          </Fieldset>
+        </ContainerFieldset>
+        <ButtonStyled type="submit">Publish</ButtonStyled>
+      </Form>
+    </ContainerSection>
   );
 };
 
