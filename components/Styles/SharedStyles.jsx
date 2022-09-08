@@ -48,7 +48,6 @@ const ButtonStyled = styled.button`
 `;
 
 const Votes = styled.span`
-  color: #000;
   color: #fff;
   border: 1px solid white;
   border-radius: 10px;
@@ -57,12 +56,11 @@ const Votes = styled.span`
   padding: 0.5rem;
   font-weight: 800;
   width: 3rem;
-
-  :active {
-    color: #000;
-    background-color: #cb5252;
-    border-color: #ffae00;
-  }
 `;
 
-export { ContainerMain, ContainerSection, ButtonStyled, Votes };
+const MaxVotes = styled(Votes)`
+  width: 2rem;
+  border: 0;
+`;
+
+export { ContainerMain, ContainerSection, ButtonStyled, Votes, MaxVotes };
