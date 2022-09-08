@@ -9,7 +9,7 @@ import {
   DetailContainer,
   Heading,
 } from "../Styles/DetailItemStyled";
-import { ContainerSection } from "../Styles/SharedStyles";
+import { ContainerSection, MaxVotes, Votes } from "../Styles/SharedStyles";
 
 const PollDetailitem = ({ poll, setPoll }) => {
   const { title, description, options, _id: idPoll } = poll;
@@ -17,6 +17,17 @@ const PollDetailitem = ({ poll, setPoll }) => {
   if (idPoll == null) {
     return "Loading";
   }
+
+  const votesValues = options.map((option) => option.votes.length);
+  const orderedVotes = votesValues.sort((a, b) => b - a);
+
+  const maxVotes = orderedVotes[0];
+
+  const filterMaxVotedOption = options.filter(
+    (option) => option.votes.length === maxVotes
+  );
+
+  const MaxVotedOption = filterMaxVotedOption[0].option;
 
   return (
     <>
@@ -29,9 +40,9 @@ const PollDetailitem = ({ poll, setPoll }) => {
                 <Description>{description}</Description>
               </Heading>
               <Info>
-                The winning option for now is <span>.... </span>
-                You still have time to change, the most chosen option, you have
-                until August 1
+                For now the winning option is{" "}
+                <MaxVotes>{MaxVotedOption}</MaxVotes> and have{" "}
+                <MaxVotes>{maxVotes} votes</MaxVotes>
               </Info>
             </InfoContainer>
             <OptionsToVote poll={poll} setPoll={setPoll} />
