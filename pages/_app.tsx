@@ -25,7 +25,7 @@ const App = ({ Component, pageProps }) => {
           <GlobalStyle />
           <Head>
             <title>VoteApp</title>
-            <link rel="icon" href="/favicon.ico" />
+            <link rel="icon" href="/chicken-rooster-icon.svg" />
           </Head>
           <Header>
             <Title>| Vote |</Title>
