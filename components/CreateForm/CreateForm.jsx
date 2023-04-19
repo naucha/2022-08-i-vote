@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-import { Title } from "../Styles/DetailItemStyled";
 import {
   ContainerFieldset,
   ContainerSection,
@@ -11,7 +10,6 @@ import {
   Legend,
   TextArea,
 } from "../Styles/FormStyles";
-import { ButtonStyled } from "../Styles/SharedStyles";
 
 const CreateForm = ({ data }) => {
   const blankFields = {
@@ -59,7 +57,7 @@ const CreateForm = ({ data }) => {
 
   return (
     <ContainerSection>
-      <Title>Create new poll and shared</Title>
+      <h1>Create new poll and shared</h1>
       <Form noValidate autoComplete="off" onSubmit={handleSubmit}>
         <ContainerFieldset>
           <Fieldset>
@@ -110,7 +108,7 @@ const CreateForm = ({ data }) => {
             />
           </Fieldset>
         </ContainerFieldset>
-        <ButtonStyled type="submit">Publish</ButtonStyled>
+        <button type="submit">Publish</button>
       </Form>
     </ContainerSection>
   );

@@ -4,8 +4,7 @@ import { useContext, useEffect } from "react";
 import PollModel from "../../models/Poll";
 import PollDetailitem from "../../components/PollDetailitem/PollDetailitem";
 import { OptionVotesContext } from "../../store/context/OptionVotesContext";
-import StyledLink from "../../components/Styles/LinkStyles";
-import { ContainerMain } from "../../components/Styles/SharedStyles";
+import Link from "next/link";
 
 const PollDetail = ({ element }) => {
   const { poll, setPoll } = useContext(OptionVotesContext);
@@ -19,10 +18,14 @@ const PollDetail = ({ element }) => {
       <Head>
         <title>Votation</title>
       </Head>
-      <ContainerMain>
+      <div>
         <PollDetailitem poll={poll} setPoll={setPoll} />
-        <StyledLink href="/" name="Back Home"></StyledLink>
-      </ContainerMain>
+        <Link href={"/"} name="Back Home">
+          <div className="border-2 border-blue-500 rounded-3xl p-2 text-center text-1xl w-48">
+            ← Back Home
+          </div>
+        </Link>
+      </div>
     </>
   );
 };
