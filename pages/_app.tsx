@@ -1,47 +1,35 @@
 import Head from "next/head";
 import Link from "next/link";
-import { Header, Navbar, Title } from "../components/Navbar/Navbar";
 import React from "react";
 import { OptionVotesProvider } from "../store/context/OptionVotesContext";
-import { ThemeProvider, DefaultTheme } from "styled-components";
-import GlobalStyle from "../components/Styles/globalStyles";
-
-const theme: DefaultTheme = {
-  color: {
-    primary: "#fff",
-    secondary: "#45b1df",
-  },
-  bgcolor: {
-    primary: "#000",
-    secondary: "#fff",
-  },
-};
+import "../asset/css/globals.css";
 
 const App = ({ Component, pageProps }) => {
   return (
     <>
       <OptionVotesProvider>
-        <ThemeProvider theme={theme}>
-          <GlobalStyle />
-          <Head>
-            <title>VoteApp</title>
-            <link rel="icon" href="/chicken-rooster-icon.svg" />
-          </Head>
-          <Header>
-            <Title>| Vote |</Title>
-            <Navbar>
-              <Link href={`/`}>
-                <a>Home</a>
-              </Link>
-              <Link href={`/new`}>
-                <a>Poll Maker</a>
-              </Link>
-            </Navbar>
-          </Header>
-          <main>
-            <Component {...pageProps} />
-          </main>
-        </ThemeProvider>
+        <Head>
+          <link rel="icon" href="/chicken-rooster-icon.svg" />
+        </Head>
+        <div className="flex container mt-8 content-normal min-w-full">
+          <h1 className="text-3xl text-center flex-1 font-bold  text-teal-600 hover:text-teal-100 mobile:text-red-300  laptop:text-red-600">
+            VoteApp
+          </h1>
+          <Link href={`/`}>
+            <a className="text-3xl text-center flex-1 font-bold text-teal-600 hover:text-teal-100 rounded">
+              Home
+            </a>
+          </Link>
+          <Link href={`/new`}>
+            <a className="text-3xl text-center flex-1 font-bold text-teal-600 hover:text-teal-100 hover:w-0 rounded">
+              Poll Maker
+            </a>
+          </Link>
+        </div>
+
+        <main className="w-full">
+          <Component {...pageProps} />
+        </main>
       </OptionVotesProvider>
     </>
   );

@@ -1,40 +1,16 @@
-import styled from "styled-components";
-
-const List = styled.ul`
-  display: flex;
-  margin: 0;
-  padding: 0;
-  flex-wrap: wrap;
-  @media (max-width: 400px) {
-    flex-direction: column;
-    justify-content: center;
-  }
-`;
-
-const Option = styled.li`
-  border-radius: 10px;
-  margin: 1rem;
-
-  padding: 0.5rem;
-
-  text-align: center;
-  color: inherit;
-  border: 1px solid #fff;
-  width: 8rem;
-  display: grid;
-  @media (max-width: 400px) {
-    min-width: 18rem;
-  }
-`;
-
 const Options = ({ options }) => {
   return (
     <>
-      <List>
+      <ul className="flex p-0 ml-4 mr-4 mt-4 flex-col gap-2">
         {options.map(({ option }, index) => (
-          <Option key={index}>{option}</Option>
+          <li
+            className="p-2 grid h-10 text-center last-of-type:mb-4 border-white border rounded-xl"
+            key={index}
+          >
+            {option}
+          </li>
         ))}
-      </List>
+      </ul>
     </>
   );
 };

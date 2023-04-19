@@ -1,29 +1,12 @@
-import styled from "styled-components";
 import PollListItem from "../PollListitem/PollListItem";
-
-export const GridContainer = styled.ul`
-  margin: 0;
-  padding: 0;
-  justify-content: center;
-
-  display: grid;
-  grid-auto-flow: row;
-
-  gap: 1em;
-
-  @media (min-width: 660px) {
-    display: flex;
-    flex-flow: wrap;
-  }
-`;
 
 const Polls = ({ polls }) => {
   return (
-    <GridContainer>
+    <div className="grid grid-cols-1 gap-3 mobile:grid-cols-2 tablet:grid-cols-3 laptop:grid-cols-4 desktop:grid-cols-6">
       {polls.map((poll, index) => (
         <PollListItem key={index} poll={poll} />
       ))}
-    </GridContainer>
+    </div>
   );
 };
 

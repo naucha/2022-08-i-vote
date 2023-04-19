@@ -1,15 +1,5 @@
 import { CircleChart } from "../CircleChart/CircleChart";
 import { OptionsToVote } from "../OptionsToVote/OptionsToVote";
-import {
-  Description,
-  Info,
-  Title,
-  ListContainer,
-  InfoContainer,
-  DetailContainer,
-  Heading,
-} from "../Styles/DetailItemStyled";
-import { ContainerSection, MaxVotes, Votes } from "../Styles/SharedStyles";
 
 const PollDetailitem = ({ poll, setPoll }) => {
   const { title, description, options, _id: idPoll } = poll;
@@ -31,25 +21,20 @@ const PollDetailitem = ({ poll, setPoll }) => {
 
   return (
     <>
-      <ContainerSection>
-        <ListContainer>
-          <DetailContainer>
-            <InfoContainer>
-              <Heading>
-                <Title>{title}</Title>
-                <Description>{description}</Description>
-              </Heading>
-              <Info>
-                For now the winning option is{" "}
-                <MaxVotes>{MaxVotedOption}</MaxVotes> and have{" "}
-                <MaxVotes>{maxVotes} votes</MaxVotes>
-              </Info>
-            </InfoContainer>
+      <div className="grid grid-cols-2 gap-4 mt-10 mb-4">
+        <div className="pl-2 pr-2 border rounded-xl flex-col gap-y-2  min-w-full text-center">
+          <div>
+            <h1 className="mt-4 text-2xl text-teal-600 font-bold">{title}</h1>
+            <div className="pl-4 pr-4 text-sm">{description}</div>
+          </div>
+          <div>
+            For now the winning option is <span>{MaxVotedOption}</span> and have{" "}
+            <span>{maxVotes} votes</span>
             <OptionsToVote poll={poll} setPoll={setPoll} />
-          </DetailContainer>
-          <CircleChart options={options} />
-        </ListContainer>
-      </ContainerSection>
+          </div>
+        </div>
+        <CircleChart options={options} />
+      </div>
     </>
   );
 };
